@@ -5,8 +5,14 @@ using System.Linq;
 
 namespace PaoNaChapa.Heranca
 {
+    /// <summary>
+    /// Interface do usuário
+    /// </summary>
     internal class Apresentacao
     {
+        /// <summary>
+        /// Controla os itens do menu que serão apresentados ao usuário
+        /// </summary>
         private enum EMenu
         {
             [Description("Adicionar itens ao carrinho")]
@@ -21,6 +27,9 @@ namespace PaoNaChapa.Heranca
             ExecutarFluxo();
         }
 
+        /// <summary>
+        /// Exibe o menu para o usuário
+        /// </summary>
         private void ExibirMenu()
         {
             Console.WriteLine("Escolha uma das opções: ");
@@ -30,6 +39,9 @@ namespace PaoNaChapa.Heranca
             Console.WriteLine("0 - Sair");
         }
 
+        /// <summary>
+        /// Mantém a apresentação das informações para o usuário
+        /// </summary>
         private void ExecutarFluxo()
         {
             int resposta;
@@ -40,6 +52,10 @@ namespace PaoNaChapa.Heranca
             } while (resposta != 0);
         }
 
+        /// <summary>
+        /// Converte o EMenu em um dicionário, para construção do menu
+        /// </summary>
+        /// <returns>Dicionário com um inteiro e uma string</returns>
         private Dictionary<int, string> ConverterMenu()
         {
             Dictionary<int, string> menu = new Dictionary<int, string>();

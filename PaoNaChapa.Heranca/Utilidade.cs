@@ -7,6 +7,9 @@ using System.Text;
 
 namespace PaoNaChapa.Heranca
 {
+    /// <summary>
+    /// Container para métodos que podem ser utilizados em mais de um local no projeto
+    /// </summary>
     public static class Utilidade
     {
         public static string GetDescricaoEnum(Enum valor)
