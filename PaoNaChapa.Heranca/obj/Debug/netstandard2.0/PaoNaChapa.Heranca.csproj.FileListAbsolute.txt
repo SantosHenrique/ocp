@@ -1,0 +1,9 @@
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\bin\Debug\netstandard2.0\PaoNaChapa.Heranca.deps.json
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\bin\Debug\netstandard2.0\PaoNaChapa.Heranca.dll
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\bin\Debug\netstandard2.0\PaoNaChapa.Heranca.pdb
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\obj\Debug\netstandard2.0\PaoNaChapa.Heranca.csprojAssemblyReference.cache
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\obj\Debug\netstandard2.0\PaoNaChapa.Heranca.csproj.CoreCompileInputs.cache
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\obj\Debug\netstandard2.0\PaoNaChapa.Heranca.AssemblyInfoInputs.cache
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\obj\Debug\netstandard2.0\PaoNaChapa.Heranca.AssemblyInfo.cs
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\obj\Debug\netstandard2.0\PaoNaChapa.Heranca.dll
+C:\Users\ferna\source\repos\OpenClosedPrinciple\PaoNaChapa.Heranca\obj\Debug\netstandard2.0\PaoNaChapa.Heranca.pdb
