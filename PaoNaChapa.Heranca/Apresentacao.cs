@@ -19,8 +19,8 @@ namespace PaoNaChapa.Heranca
             Um = 1,
             [Description("Remover itens do carrinho")]
             Dois = 2
-
         }
+
         public Apresentacao()
         {
             Console.WriteLine("Seja bem vindo à Pão na Chapa");
@@ -45,11 +45,32 @@ namespace PaoNaChapa.Heranca
         private void ExecutarFluxo()
         {
             int resposta;
+            GerenciarCompra gerenciarCompra = new GerenciarCompra();
+            int saldoCarrinho = 0;
             do
             {
                 ExibirMenu();
                 resposta = int.Parse(Console.ReadLine());
+                if (resposta != 0)
+                    ExibirCarrinho(gerenciarCompra.DefinirAcao(resposta, ref saldoCarrinho), saldoCarrinho);
             } while (resposta != 0);
+        }
+
+        /// <summary>
+        /// Informar situação do carrinho de compras para o usuário
+        /// </summary>
+        /// <param name="ultimaQtdCarrinho">Indica se o carrinho foi incrementado ou decrementado</param>
+        /// <param name="saldoCarrinho">Saldo do carrinho</param>
+        private void ExibirCarrinho(int ultimaQtdCarrinho, int saldoCarrinho)
+        {
+            if (ultimaQtdCarrinho == 0)
+                Console.WriteLine("O carrinho não sofreu alterações.");
+            else
+            {
+                string palavraChave = ultimaQtdCarrinho > 0 ? "adicionado" : "removido";
+                Console.WriteLine($"Item {palavraChave} com sucesso!");
+            }
+            Console.WriteLine($"Saldo: {saldoCarrinho}");
         }
 
         /// <summary>
