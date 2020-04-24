@@ -12,6 +12,11 @@ namespace PaoNaChapa.Heranca
     /// </summary>
     public static class Utilidade
     {
+        /// <summary>
+        /// Pegar descrição de um item de um enum
+        /// </summary>
+        /// <param name="valor">Item do enum</param>
+        /// <returns></returns>        
         public static string GetDescricaoEnum(Enum valor)
         {
             FieldInfo campoInfo = valor.GetType().GetField(valor.ToString());
