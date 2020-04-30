@@ -47,6 +47,10 @@ namespace PaoNaChapa.Heranca
         /// <returns></returns>
         private int ManipularCarrinho(bool adicionar) => adicionar ? 1 : -1;
 
+        /// <summary>
+        /// Veririfcar se o usuário reamente deseja finalizar a compra
+        /// </summary>
+        /// <returns>True para finalizar compra e false para não finalizar</returns>
         private bool ConfirmarCaixa()
         {
             string resposta = string.Empty;

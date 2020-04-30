@@ -89,8 +89,17 @@ namespace PaoNaChapa.Heranca
         public static string ConfirmarCaixa()
         {
             Console.WriteLine("Tem certeza que deseja finalizar a compra? (Sim/Não)");
-            string resposta = Console.ReadLine();
-            return resposta;
+            return Console.ReadLine();
         }
+
+        public static string InformarCredenciaisCartao()
+        {
+            Console.WriteLine("Favor informar a senha");
+            return Console.ReadLine();
+        }
+
+        public static void ValidarCredenciais() => Console.WriteLine("Verificando credenciais...");
+        public static void CompletarTransacao() => Console.WriteLine("Transação aceita! Agradecemos pela sua compra.");
+
     }
 }
