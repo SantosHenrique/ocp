@@ -12,7 +12,7 @@ namespace PaoNaChapa.Heranca
         /// </summary>
         public static void Main()
         {
-            Apresentacao.ExecutarFluxo(new Apresentacao());
+            GerenciaCompra.ExecutarFluxo(new Apresentacao(true));
         }
     }
 }

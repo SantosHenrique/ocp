@@ -1,18 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace PaoNaChapa.Heranca
 {
     public class GerenciaPagamento
     {
         public GerenciaPagamento()
         {
-            ApresentarMenu();
+            Executar();
         }
-        public void ApresentarMenu()
-        {
 
+        private void Executar()
+        {
+            int resposta = new Apresentacao(false).ExibirMenu((int)Enuns.ETipoMenu.Pagamento);
+
+        }
+
+        private void DefinirAcao(int opcao)
+        {
+            switch (opcao)
+            {
+                case (int)Enuns.EMenuPagamento.Debito:break;
+                case (int)Enuns.EMenuPagamento.Dinheiro:break;
+                case (int)Enuns.EMenuPagamento.Marcar:break;
+                default:break;
+            }
         }
     }
 }

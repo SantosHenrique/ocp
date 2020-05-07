@@ -19,15 +19,15 @@ namespace PaoNaChapa.Heranca
             int resposta = opcao;
             switch (opcao)
             {
-                case 1:
+                case (int)Enuns.EMenu.Um:
                     resposta = ManipularCarrinho(true);
                     saldoCarrinho += resposta;
                     break;
-                case 2:
+                case (int)Enuns.EMenu.Dois:
                     resposta = ManipularCarrinho(false);
                     saldoCarrinho += resposta;
                     break;
-                case 3:
+                case (int)Enuns.EMenu.Tres:
                     if (ConfirmarCaixa())
                     {
                         GerenciaPagamento gP = new GerenciaPagamento();
@@ -55,19 +55,34 @@ namespace PaoNaChapa.Heranca
         /// <returns>True para finalizar compra e false para não finalizar</returns>
         private bool ConfirmarCaixa()
         {
-            string resposta = string.Empty;
             bool? irParaCaixa = null;
             string[] sim = { "s", "sim" };
             string[] nao = { "n", "nao" };
             do
             {
-                resposta = Apresentacao.ConfirmarCaixa().ToLower().Replace("~", "");
+                string resposta = Apresentacao.ConfirmarCaixa().ToLower().Replace("~", "");
                 if (sim.Contains(resposta) || nao.Contains(resposta))
                     irParaCaixa = sim.Contains(resposta);
                 else
                     Console.WriteLine("Opçao inválida! Informe Sim ou Não.");
             } while (!irParaCaixa.HasValue);
             return irParaCaixa.Value;
+        }
+
+        /// <summary>
+        /// Mantém a apresentação das informações para o usuário
+        /// </summary>
+        public static void ExecutarFluxo(Apresentacao apresentacao)
+        {
+            int resposta;
+            GerenciaCompra gerenciarCompra = new GerenciaCompra();
+            int saldoCarrinho = 0;
+            do
+            {
+                resposta = apresentacao.ExibirMenu((int)Enuns.ETipoMenu.Padrao);
+                if (resposta != 0)
+                    apresentacao.ExibirCarrinho(gerenciarCompra.DefinirAcao(resposta, ref saldoCarrinho), saldoCarrinho);
+            } while (resposta != 0 && resposta != 3);
         }
     }
 }

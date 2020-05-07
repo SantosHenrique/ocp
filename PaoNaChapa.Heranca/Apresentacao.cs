@@ -8,39 +8,34 @@ namespace PaoNaChapa.Heranca
     /// </summary>
     internal class Apresentacao
     {
-        public Apresentacao()
+        public Apresentacao(bool apresentar)
         {
-            Console.WriteLine("Seja bem vindo à Pão na Chapa");
+            if (apresentar)
+                Console.WriteLine("Seja bem vindo à Pão na Chapa");
         }
 
         /// <summary>
         /// Exibe o menu para o usuário
         /// </summary>
-        public void ExibirMenu(int tipo)
+        public int ExibirMenu(int tipo)
         {
             Console.WriteLine("Escolha uma das opções: ");
-            Dictionary<int, string> menu = ConverterMenu();
+            Dictionary<int, string> menu = DefinirConversaoEnum(tipo);
             foreach (var item in menu)
                 Console.WriteLine($"{item.Key} - {item.Value}");
+
             if (tipo == (int)Enuns.ETipoMenu.Padrao)
                 Console.WriteLine("0 - Sair");
+
+            return int.Parse(Console.ReadLine());
         }
 
-        /// <summary>
-        /// Mantém a apresentação das informações para o usuário
-        /// </summary>
-        public static void ExecutarFluxo(Apresentacao apresentacao)
+        private Dictionary<int, string> DefinirConversaoEnum(int tipo)
         {
-            int resposta;
-            GerenciaCompra gerenciarCompra = new GerenciaCompra();
-            int saldoCarrinho = 0;
-            do
-            {
-                apresentacao.ExibirMenu((int)Enuns.ETipoMenu.Padrao);
-                resposta = int.Parse(Console.ReadLine());
-                if (resposta != 0)
-                    apresentacao.ExibirCarrinho(gerenciarCompra.DefinirAcao(resposta, ref saldoCarrinho), saldoCarrinho);
-            } while (resposta != 0 && resposta != 3);
+            if (tipo == (int)Enuns.ETipoMenu.Padrao)
+                return ConverterMenu<Enuns.EMenu>();
+            else
+                return ConverterMenu<Enuns.EMenuPagamento>();
         }
 
         /// <summary>
@@ -48,7 +43,7 @@ namespace PaoNaChapa.Heranca
         /// </summary>
         /// <param name="ultimaQtdCarrinho">Indica se o carrinho foi incrementado ou decrementado</param>
         /// <param name="saldoCarrinho">Saldo do carrinho</param>
-        private void ExibirCarrinho(int ultimaQtdCarrinho, int saldoCarrinho)
+        public void ExibirCarrinho(int ultimaQtdCarrinho, int saldoCarrinho)
         {
             if (ultimaQtdCarrinho == 0)
                 Console.WriteLine("O carrinho não sofreu alterações.");
@@ -64,11 +59,11 @@ namespace PaoNaChapa.Heranca
         /// Converte o EMenu em um dicionário, para construção do menu
         /// </summary>
         /// <returns>Dicionário com um inteiro e uma string</returns>
-        private Dictionary<int, string> ConverterMenu()
+        private Dictionary<int, string> ConverterMenu<T>() where T : Enum
         {
             Dictionary<int, string> menu = new Dictionary<int, string>();
-            foreach (Enuns.EMenu item in Enum.GetValues(typeof(Enuns.EMenu)))
-                menu.Add((int)item, Utilidade.GetDescricaoEnum(item));
+            foreach (Enum item in Enum.GetValues(typeof(T)))
+                menu.Add(Convert.ToInt32(item), Utilidade.GetDescricaoEnum(item));
             return menu;
         }
 

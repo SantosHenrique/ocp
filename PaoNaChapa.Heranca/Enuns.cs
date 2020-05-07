@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace PaoNaChapa.Heranca
 {
     /// <summary>
     /// Todo Enum do projeto estará aqui
     /// </summary>
-    public class Enuns
+    public class Enuns 
     {
         /// <summary>
         /// Controla os itens do menu que serão apresentados ao usuário
@@ -26,11 +27,11 @@ namespace PaoNaChapa.Heranca
         public enum EMenuPagamento
         {
             [Description("Cartão - Débito")]
-            Um = 1,
+            Debito = 1,
             [Description("Dinheiro")]
-            Dois = 2,
+            Dinheiro = 2,
             [Description("Marcar na conta")]
-            Tres = 3
+            Marcar = 3
         }
 
         /// <summary>
