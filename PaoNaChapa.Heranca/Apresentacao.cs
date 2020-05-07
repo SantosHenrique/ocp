@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 
 namespace PaoNaChapa.Heranca
 {
@@ -10,19 +8,6 @@ namespace PaoNaChapa.Heranca
     /// </summary>
     internal class Apresentacao
     {
-        /// <summary>
-        /// Controla os itens do menu que serão apresentados ao usuário
-        /// </summary>
-        private enum EMenu
-        {
-            [Description("Adicionar itens ao carrinho")]
-            Um = 1,
-            [Description("Remover itens do carrinho")]
-            Dois = 2,
-            [Description("Caixa")]
-            Tres = 3
-        }
-
         public Apresentacao()
         {
             Console.WriteLine("Seja bem vindo à Pão na Chapa");
@@ -31,13 +16,14 @@ namespace PaoNaChapa.Heranca
         /// <summary>
         /// Exibe o menu para o usuário
         /// </summary>
-        public void ExibirMenu()
+        public void ExibirMenu(int tipo)
         {
             Console.WriteLine("Escolha uma das opções: ");
             Dictionary<int, string> menu = ConverterMenu();
             foreach (var item in menu)
                 Console.WriteLine($"{item.Key} - {item.Value}");
-            Console.WriteLine("0 - Sair");
+            if (tipo == (int)Enuns.ETipoMenu.Padrao)
+                Console.WriteLine("0 - Sair");
         }
 
         /// <summary>
@@ -46,11 +32,11 @@ namespace PaoNaChapa.Heranca
         public static void ExecutarFluxo(Apresentacao apresentacao)
         {
             int resposta;
-            GerenciarCompra gerenciarCompra = new GerenciarCompra();
+            GerenciaCompra gerenciarCompra = new GerenciaCompra();
             int saldoCarrinho = 0;
             do
             {
-                apresentacao.ExibirMenu();
+                apresentacao.ExibirMenu((int)Enuns.ETipoMenu.Padrao);
                 resposta = int.Parse(Console.ReadLine());
                 if (resposta != 0)
                     apresentacao.ExibirCarrinho(gerenciarCompra.DefinirAcao(resposta, ref saldoCarrinho), saldoCarrinho);
@@ -81,17 +67,25 @@ namespace PaoNaChapa.Heranca
         private Dictionary<int, string> ConverterMenu()
         {
             Dictionary<int, string> menu = new Dictionary<int, string>();
-            foreach (EMenu item in Enum.GetValues(typeof(EMenu)))
+            foreach (Enuns.EMenu item in Enum.GetValues(typeof(Enuns.EMenu)))
                 menu.Add((int)item, Utilidade.GetDescricaoEnum(item));
             return menu;
         }
 
+        /// <summary>
+        /// Perguntar ao usuário se desa prosseguir com a operação em questão
+        /// </summary>
+        /// <returns>Resposta do usuário</returns>
         public static string ConfirmarCaixa()
         {
             Console.WriteLine("Tem certeza que deseja finalizar a compra? (Sim/Não)");
             return Console.ReadLine();
         }
 
+        /// <summary>
+        /// Interface para que o usuário informe as credenciais do cartão, a princípio apenas a senha
+        /// </summary>
+        /// <returns>Retornar senha</returns>
         public static string InformarCredenciaisCartao()
         {
             Console.WriteLine("Favor informar a senha");

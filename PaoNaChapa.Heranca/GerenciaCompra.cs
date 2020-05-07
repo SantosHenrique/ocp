@@ -6,7 +6,7 @@ namespace PaoNaChapa.Heranca
     /// <summary>
     /// Gerenciador de compras da aplicação
     /// </summary>
-    internal class GerenciarCompra
+    internal class GerenciaCompra
     {
         /// <summary>
         /// Executar funcionalidade de acordo com a escolha do usuário
@@ -28,8 +28,10 @@ namespace PaoNaChapa.Heranca
                     saldoCarrinho += resposta;
                     break;
                 case 3:
-                    Console.WriteLine("ENTREI NO 3");
-                    ConfirmarCaixa();
+                    if (ConfirmarCaixa())
+                    {
+                        GerenciaPagamento gP = new GerenciaPagamento();
+                    }
                     break;
                 default: break;
             }
@@ -44,7 +46,7 @@ namespace PaoNaChapa.Heranca
         /// Manipular o carrinho de compras
         /// </summary>
         /// <param name="adicionar">Indica se o usuário adicionou ou removeu um item do carrinho</param>
-        /// <returns></returns>
+        /// <returns>Quantidade de item que será adicionada ou removida do carrinho</returns>
         private int ManipularCarrinho(bool adicionar) => adicionar ? 1 : -1;
 
         /// <summary>
@@ -65,11 +67,6 @@ namespace PaoNaChapa.Heranca
                 else
                     Console.WriteLine("Opçao inválida! Informe Sim ou Não.");
             } while (!irParaCaixa.HasValue);
-            if (irParaCaixa.Value)
-                Console.WriteLine("Chamar pagamento");
-            else
-                Console.WriteLine("Chamar pagamento");
-
             return irParaCaixa.Value;
         }
     }
